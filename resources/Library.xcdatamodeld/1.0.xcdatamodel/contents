@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AppAttribute" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="Song" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 16" indexed="YES" syncable="YES"/>
+        <attribute name="searchable_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="numbers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SongNumber" inverseName="song" inverseEntity="SongNumber" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="songs" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="SongNumber" syncable="YES">
+        <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" regularExpressionString="[0-9]+" syncable="YES"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="numbers" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Song" inverseName="user" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AppAttribute" positionX="-45" positionY="116" width="128" height="73"/>
+        <element name="Song" positionX="187" positionY="194" width="128" height="148"/>
+        <element name="SongNumber" positionX="385" positionY="297" width="128" height="88"/>
+        <element name="User" positionX="-45" positionY="207" width="128" height="133"/>
+    </elements>
+</model>
